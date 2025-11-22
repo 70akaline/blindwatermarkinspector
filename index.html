@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image LSB / Blind Watermark Viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-title">Image LSB / Blind Watermark Viewer</div>
+        <div class="nav-links">
+            <button class="nav-button" id="about-button" type="button">About</button>
+        </div>
+    </nav>
+
+    <main class="main">
+        <section class="panel">
+            <input id="file-input" type="file" accept="image/*" hidden>
+            <button id="select-image" class="primary-button" type="button">
+                Choose Image
+            </button>
+            <p class="hint">
+                Select an image that may contain a blind watermark or hidden data.
+                Use the controls below to inspect different color planes and bit layers.
+            </p>
+
+            <div id="viewer" class="viewer hidden">
+                <div class="viewer-header">
+                    <div class="mode-selector">
+                        <button id="mode-label" class="mode-label" type="button">Mode: Original</button>
+                        <div id="mode-dropdown" class="mode-dropdown hidden"></div>
+                    </div>
+                    <div class="viewer-controls">
+                        <button id="prev-mode" class="secondary-button" type="button">&lt;</button>
+                        <button id="next-mode" class="secondary-button" type="button">&gt;</button>
+                    </div>
+                </div>
+                <canvas id="canvas" class="canvas" width="200" height="200"></canvas>
+                <p class="hint small">
+                    Tip: Use your keyboard ← and → keys to switch modes once an image is loaded.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <div id="about-modal" class="modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-dialog">
+            <header class="modal-header">
+                <h2>About this tool</h2>
+            </header>
+            <div class="modal-body">
+                <p>
+                    This viewer lets you inspect the low-order bits (LSB) of an image's
+                    color channels. Blind watermarks and simple steganography techniques
+                    are often stored in these bits.
+                </p>
+                <p>
+                    Use the mode switches to explore:
+                    full-color channels (R / G / B / Alpha), inverted colors, and individual
+                    bit planes for each channel (Plane 0, 1, 2).
+                </p>
+            </div>
+            <footer class="modal-footer">
+                <button id="close-about" class="primary-button" type="button">Close</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
