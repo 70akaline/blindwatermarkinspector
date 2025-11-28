@@ -32,7 +32,7 @@ If your browser has strict file-access rules (for example with some Chrome confi
 you can serve the directory with a tiny static server:
 
 ```bash
-cd /Users/zerozaki07/tmp/blindwater
+cd /apath
 python3 -m http.server 8000
 ```
 
